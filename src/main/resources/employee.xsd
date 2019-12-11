@@ -1,0 +1,75 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.employee.co.in" targetNamespace="http://www.employee.co.in"
+	elementFormDefault="qualified">
+
+	<xs:element name="getEmployeeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employeeId" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteEmployeeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employeeId" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="createEmployeeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employeeId" type="xs:int" />
+				<xs:element name="employeeName" type="xs:string" />
+				<xs:element name="Salary" type="xs:int" />
+				<xs:element name="phoneNo" type="xs:string" />
+				<xs:element name="department" type="tns:Departments" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="updateEmployeeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employeeId" type="xs:int" />
+				<xs:element name="employeeName" type="xs:string" />
+				<xs:element name="Salary" type="xs:int" />
+				<xs:element name="phoneNo" type="xs:string" />
+				<xs:element name="department" type="tns:Departments" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmployeeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:string" />
+				<!-- <xs:element name="departments" type="tns:Departments"/> -->
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getEmployeeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employee" type="tns:employee" />
+				<!-- <xs:element name="departments" type="tns:Departments"/> -->
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="employee">
+		<xs:sequence>
+			<xs:element name="employeeId" type="xs:int" />
+			<xs:element name="employeeName" type="xs:string" />
+			<xs:element name="Salary" type="xs:int" />
+			<xs:element name="phoneNo" type="xs:string" />
+			<xs:element name="department" type="tns:Departments" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="Departments">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IT" />
+			<xs:enumeration value="Development" />
+			<xs:enumeration value="Manager" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
